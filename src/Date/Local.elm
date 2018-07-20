@@ -15,6 +15,7 @@ import Dict exposing (Dict)
 
 Time zones and default formats are not implemented,
 but included to avoid possible version conflicts in the future.
+
 -}
 type alias Local =
     { date :
@@ -24,21 +25,25 @@ type alias Local =
         , wdaysAbbrev : WeekDays
         , defaultFormat :
             Maybe String
-            -- for %x
+
+        -- for %x
         }
     , time :
         { am : String
         , pm : String
         , defaultFormat :
             Maybe String
-            -- for %X
+
+        -- for %X
         }
     , timeZones :
         Maybe TimeZones
-        -- for %Z
+
+    -- for %Z
     , defaultFormat :
         Maybe String
-        -- for %c
+
+    -- for %c
     }
 
 
@@ -76,6 +81,7 @@ type alias WeekDays =
 {-| Maps from %z type string (+hhmm or -hhmm) to timezone name or abbreviation.
 
 Not currently implemented.
+
 -}
 type alias TimeZones =
     Dict String String
@@ -327,6 +333,69 @@ greek =
         { am = "πμ"
         , pm = "μμ"
         , defaultFormat = Nothing
+        }
+    , timeZones = Nothing
+    , defaultFormat = Nothing
+    }
+
+
+{-| German set of localizations.
+-}
+german : Local
+german =
+    { date =
+        { months =
+            { jan = "Januar"
+            , feb = "Februar"
+            , mar = "März"
+            , apr = "April"
+            , may = "Mai"
+            , jun = "Juni"
+            , jul = "Juli"
+            , aug = "August"
+            , sep = "September"
+            , oct = "Oktober"
+            , nov = "November"
+            , dec = "Dezember"
+            }
+        , monthsAbbrev =
+            { jan = "Jän"
+            , feb = "Feb"
+            , mar = "März"
+            , apr = "Apr"
+            , may = "Mai"
+            , jun = "Juni"
+            , jul = "Juli"
+            , aug = "Aug"
+            , sep = "Sept"
+            , oct = "Okt"
+            , nov = "Nov"
+            , dec = "Dez"
+            }
+        , wdays =
+            { mon = "Montag"
+            , tue = "Dienstag"
+            , wed = "Mittwoch"
+            , thu = "Donnerstag"
+            , fri = "Freitag"
+            , sat = "Samstag"
+            , sun = "Sonntag"
+            }
+        , wdaysAbbrev =
+            { mon = "Mo"
+            , tue = "Di"
+            , wed = "Mi"
+            , thu = "DO"
+            , fri = "Fr"
+            , sat = "Sa"
+            , sun = "So"
+            }
+        , defaultFormat = Just "%Y-%m-%d"
+        }
+    , time =
+        { am = "am"
+        , pm = "pm"
+        , defaultFormat = Just "%H:%M"
         }
     , timeZones = Nothing
     , defaultFormat = Nothing
